@@ -13,6 +13,7 @@ const Services = ({ facility }) => {
     const { data } = await axios.get(
       "https://covid-19-delhi.herokuapp.com/services"
     );
+     data.sort((a, b) => b.id - a.id);
     console.log(data);
     setAll(data);
     setLoading(false);
