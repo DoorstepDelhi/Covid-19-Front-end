@@ -53,6 +53,12 @@ const Services = ({ facility }) => {
               scope="col"
               class="text-gray-600 font-semibold uppercase py-2 border-r border-gray-300  px-3"
             >
+              City Name
+            </th>
+            <th
+              scope="col"
+              class="text-gray-600 font-semibold uppercase py-2 border-r border-gray-300  px-3"
+            >
               Facilities List
             </th>
             <th
@@ -92,13 +98,14 @@ const Services = ({ facility }) => {
                     <td className="  text-center max-w-sm py-2 border-r border-gray-300 px-3">
                       {data.address}
                     </td>
-                    <td className="  text-center py-2 border-r border-gray-300" >
-                      {/* <select className=" text-center w-3/4 " >
-                        <option className="pr-12" >Available Facilities</option>
-                        {data.facilities_list.map((facility) => (
-                          <option className="w-xl text-center" disabled>{facility}</option>
+                    <td className="  text-center max-w-sm py-2 border-r border-gray-300 px-3">
+                      {data.cities_list.map((city) => (
+                        <span className="flex flex-wrap justify-center leading-tight font-semibold py-1 px-3 text-sm">
+                          {city}
+                        </span>
                         ))}
-                      </select> */}
+                    </td>
+                    <td className="  text-center py-2 border-r border-gray-300" >
                       {data.facilities_list.map((facility) => (
                         <span className="flex flex-wrap justify-center leading-tight font-semibold py-1 px-3 text-sm">
                           {facility}
