@@ -7,7 +7,7 @@ import axios from "axios";
 import LocationSearchTable from "../Components/LocationSearchTable";
 import FaciltySearchTable from "../Components/FaciltySearchTable";
 import InputSection from "../Components/InputSection";
-import Router from "next/router";
+import Link from "next/link";
 
 export default function Home() {
   const getData = async () => {
@@ -62,10 +62,24 @@ export default function Home() {
       <Head>
         <title>Covid-19 Resources</title>
       </Head>
-      <section className="bg-black z-50 flex w-full justify-center items-center">
-        <h1 className="text-white text-2xl font-body py-4">
+      <section
+        className="bg-black z-50 w-full"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <h1
+          className="text-white text-2xl font-body py-4"
+          style={{ paddingLeft: "44.2%" }}
+        >
           Covid-19 Resources
         </h1>
+        <div
+          className="text-white text-2xl font-body py-4"
+          style={{ paddingRight: "2%" }}
+        >
+          <Link href="https://covid-19-delhi.herokuapp.com/swagger/">
+            Collaborate With Us
+          </Link>
+        </div>
       </section>
       <InputSection
         searchLocation={searchLocation}
