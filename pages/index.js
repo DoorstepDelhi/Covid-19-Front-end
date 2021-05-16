@@ -7,6 +7,8 @@ import axios from "axios";
 import LocationSearchTable from "../Components/LocationSearchTable";
 import FaciltySearchTable from "../Components/FaciltySearchTable";
 import InputSection from "../Components/InputSection";
+import Link from "next/link";
+
 export default function Home() {
   const getData = async () => {
     const res = await axios.get("https://covid-19-delhi.herokuapp.com/cities");
@@ -16,7 +18,7 @@ export default function Home() {
     );
     setFacilitiesAll(res2.data);
   };
-  const locationFilter = (e) => {
+  const locationFilter = async (e) => {
     e.preventDefault();
     const match = locationAll.filter(
       (location) =>
@@ -37,8 +39,9 @@ export default function Home() {
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
+  const [all, setAll] = useState([]);
   const [searchLocation, setSearchLocation] = useState("");
   const [locationAll, setLocationAll] = useState([]);
   const [locationSearch, setLocationSearch] = useState([]);
@@ -59,10 +62,24 @@ export default function Home() {
       <Head>
         <title>Covid-19 Resources</title>
       </Head>
-      <section className="bg-black z-50 flex w-full justify-center items-center">
-        <h1 className="text-white text-2xl font-body py-4">
+      <section
+        className="bg-black z-50 w-full"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <h1
+          className="text-white text-2xl font-body py-4"
+          style={{ paddingLeft: "44.2%" }}
+        >
           Covid-19 Resources
         </h1>
+        <div
+          className="text-white text-2xl font-body py-4"
+          style={{ paddingRight: "2%" }}
+        >
+          <Link href="https://covid-19-delhi.herokuapp.com/swagger/">
+            Collaborate With Us
+          </Link>
+        </div>
       </section>
       <InputSection
         searchLocation={searchLocation}
@@ -106,12 +123,18 @@ export default function Home() {
               setLocationFinal();
               setLocationDropdown(false);
               setFacilityDropdown(false);
+              setLocationSearch([]);
             }}
             className="bg-gray-200 w-40 mx-2 hover:bg-gray-300 transition duration-200 text-base lg:text-lg text-black font-semibold rounded-lg px-4 lg:px-8 py-2 lg:py-4"
           >
             Clear
           </button>
-          <button className="bg-red-600 w-40 mx-2 hover:bg-red-700 transition duration-200 text-base lg:text-lg text-white font-semibold rounded-lg px-4 lg:px-8 py-2 lg:py-4">
+          <button
+            onClick={(e) => {
+              setScreen("services");
+            }}
+            className="bg-red-600 w-40 mx-2 hover:bg-red-700 transition duration-200 text-base lg:text-lg text-white font-semibold rounded-lg px-4 lg:px-8 py-2 lg:py-4"
+          >
             Search
           </button>
         </div>
@@ -142,7 +165,9 @@ export default function Home() {
               Hospitals
             </a>
             <a
-              onClick={() => setScreen("services")}
+              onClick={() => {
+                setScreen("services");
+              }}
               className={`sm:px-6 py-3 cursor-pointer w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center tracking-wider leading-none ${
                 screen === "services"
                   ? "bg-gray-100 border-indigo-500 text-indigo-500 rounded-t text-gray-900"
@@ -189,7 +214,7 @@ export default function Home() {
       </section>
       <section className="  md:w-full flex justify-center px-4 lg:px-16 py-4">
         {screen === "hospitals" && <Hospital />}
-        {screen === "services" && <Services />}
+        {screen === "services" && <Services location={locationSearch} />}
         {screen === "volunteers" && <Volunteers />}
       </section>
     </div>
