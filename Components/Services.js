@@ -62,12 +62,6 @@ const Services = ({ facility, location }) => {
               scope="col"
               class="text-gray-600 font-semibold uppercase py-2 border-r border-gray-300  px-3"
             >
-              City Name
-            </th>
-            <th
-              scope="col"
-              class="text-gray-600 font-semibold uppercase py-2 border-r border-gray-300  px-3"
-            >
               Facilities List
             </th>
             <th
@@ -108,6 +102,7 @@ const Services = ({ facility, location }) => {
                 <td className="  text-center max-w-sm py-2 border-r border-gray-300 px-3">
                   {data.address}
                 </td>
+
                  <td className="  text-center max-w-sm py-2 border-r border-gray-300 px-3">
                       {data.cities_list.map((city) => (
                         <span className="flex flex-wrap justify-center leading-tight font-semibold py-1 px-3 text-sm">
@@ -121,6 +116,7 @@ const Services = ({ facility, location }) => {
                           {facility}
                         </span>
                         ))}
+
                 </td>
                 <td className="  text-center py-2 border-r border-gray-300 px-3 whitespace-nowrap">
                   <TimeAgo date={data.updated_at} />
