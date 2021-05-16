@@ -73,10 +73,13 @@ export default function Home() {
           Covid-19 Resources
         </h1>
         <div
-          className="text-white text-2xl font-body py-4"
+
+          className="text-white font-body py-4"
           style={{ paddingRight: "2%" }}
         >
-          <Link href="https://covid-19-delhi.herokuapp.com/swagger/">
+          <Link href="https://covid-19-delhi.herokuapp.com/swagger/" >
+
+         
             Collaborate With Us
           </Link>
         </div>
