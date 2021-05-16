@@ -58,6 +58,12 @@ const Services = ({ facility, location }) => {
             >
               Address
             </th>
+            <th
+              scope="col"
+              class="text-gray-600 font-semibold uppercase py-2 border-r border-gray-300  px-3"
+            >
+              City List
+            </th>
              <th
               scope="col"
               class="text-gray-600 font-semibold uppercase py-2 border-r border-gray-300  px-3"
