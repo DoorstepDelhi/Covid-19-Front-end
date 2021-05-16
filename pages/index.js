@@ -77,7 +77,7 @@ export default function Home() {
           className="text-white font-body py-4"
           style={{ paddingRight: "2%" }}
         >
-          <Link href="https://covid-19-delhi.herokuapp.com/swagger/" >
+          <Link href="http://collab.covid.doctor/" >
 
          
             Collaborate With Us
